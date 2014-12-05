@@ -31,4 +31,6 @@ def create_package(target)
   sh "cp hello.rb #{package_dir}/app/"
   sh "traveling-ruby extract #{package_dir}/runtime"
   sh "cp packaging/wrapper.sh #{package_dir}/hello"
+  sh "tar -czf #{package_dir}.tar.gz #{package_dir}"
+  sh "rm -rf #{package_dir}"
 end
