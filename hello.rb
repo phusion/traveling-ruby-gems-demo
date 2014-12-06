@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts "hello world"
+require 'paint'
+puts Paint["hello world", :red]
