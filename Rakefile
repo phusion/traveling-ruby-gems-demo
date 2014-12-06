@@ -45,8 +45,10 @@ def create_package(target)
   sh "mkdir #{package_dir}/runtime"
   sh "tar -xzf packaging/traveling-ruby-#{TRAVELING_RUBY_VERSION}-#{target}.tar.gz -C #{package_dir}/runtime"
   sh "cp packaging/wrapper.sh #{package_dir}/hello"
-  sh "tar -czf #{package_dir}.tar.gz #{package_dir}"
-  sh "rm -rf #{package_dir}"
+  if !ENV['DIR_ONLY']
+    sh "tar -czf #{package_dir}.tar.gz #{package_dir}"
+    sh "rm -rf #{package_dir}"
+  end
 end
 
 def download_runtime(target)
