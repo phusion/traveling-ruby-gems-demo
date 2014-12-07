@@ -1,3 +1,5 @@
+require 'bundler/setup'
+
 PACKAGE_NAME = "hello"
 VERSION = "1.0.0"
 TRAVELING_RUBY_VERSION = "20141206-2.1.5"
@@ -28,7 +30,14 @@ namespace :package do
     if RUBY_VERSION !~ /^2\.1\./
       abort "You can only 'bundle install' using Ruby 2.1, because that's what Traveling Ruby uses."
     end
-    sh "env BUNDLE_IGNORE_CONFIG=1 bundle install --path packaging/vendor"
+    sh "rm -rf packaging/tmp"
+    sh "mkdir packaging/tmp"
+    sh "cp Gemfile Gemfile.lock packaging/tmp/"
+    Bundler.with_clean_env do
+      sh "cd packaging/tmp && env BUNDLE_IGNORE_CONFIG=1 bundle install --path ../vendor --without development"
+    end
+    sh "rm -rf packaging/tmp"
+    sh "rm -f packaging/vendor/*/*/cache/*"
   end
 end
 
