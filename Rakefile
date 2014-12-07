@@ -1,3 +1,4 @@
+# For Bundler.with_clean_env
 require 'bundler/setup'
 
 PACKAGE_NAME = "hello"
