@@ -3,7 +3,7 @@ require 'bundler/setup'
 
 PACKAGE_NAME = "hello"
 VERSION = "1.0.0"
-TRAVELING_RUBY_VERSION = "20141206-2.1.5"
+TRAVELING_RUBY_VERSION = "20141209-2.1.5"
 
 desc "Package your app"
 task :package => ['package:linux:x86', 'package:linux:x86_64', 'package:osx']
