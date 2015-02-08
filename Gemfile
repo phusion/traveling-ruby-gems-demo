@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'paint'
+gem 'faker'
 
 group :development do
   gem 'rake'
